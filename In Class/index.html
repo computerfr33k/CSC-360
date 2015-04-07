@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tip Calculator</title>
+		<script src="tip-calculator.js"></script>
+		<style type="text/css">
+			.oneline {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<label for="check-amount">Check Amount</label>
+		<input onkeydown="updateTotal();" type="number" id="check-amount" size="7" />
+		<p>
+			<label for="service-rating">Service Rating</label>
+			<select onchange="updateTotal();" id="service-rating">
+				<option value="20">Excellent (20%)</option>
+				<option value="15">Good (15%)</option>
+				<option value="10">Poor (10%)</option>
+			</select>
+		</p>
+		<p>
+			<div class="oneline">
+				Tip Amount: $
+				<div class="oneline" id="tip-value">
+					0.00
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="oneline">
+				Total Amount: $
+				<div class="oneline" id="total-value">
+					0.00
+				</div>
+			</div>
+		</p>
+	</body>
+</html>
