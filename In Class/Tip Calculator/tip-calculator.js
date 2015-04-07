@@ -1,6 +1,6 @@
 function updateTotal() {
-	var tip = Number(document.getElementById("service-rating").value.trim());
-	var check = Number(document.getElementById("check-amount").value.trim());
+	var tip = Number($("#service-rating").val());
+	var check = Number($("#check-amount").val());
 	
 	var tipTotal = (check * (tip/100));
 	document.getElementById("tip-value").innerText = tipTotal.toFixed(2);
@@ -8,3 +8,7 @@ function updateTotal() {
 	var totalAmount = check + tipTotal;
 	document.getElementById("total-value").innerText = totalAmount.toFixed(2);
 }
+
+$(document).ready(function() {
+	$("#calc").attr("onClick", "updateTotal();");
+});

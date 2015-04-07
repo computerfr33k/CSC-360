@@ -1,0 +1,12 @@
+h1 {
+	color: blue;
+}
+
+.oneline {
+	display: inline-block;
+}
+
+body {
+	width: 400px;
+	margin: 0 auto;
+}
