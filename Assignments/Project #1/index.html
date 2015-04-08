@@ -9,9 +9,11 @@
 		<label for="BTC">Bitcoin(s) (BTC):</label>
 		<input type="number" id="BTC" value="1" />
 		=
-		<input id="FiatValue" type="number" />
+		<input id="FiatValue" type="number" onchange="FiatToBtc();" />
 		<select id="FiatCurrency" onchange="BtcToFiat();">
 			<!-- This will be build dynamically from JS using the json data returned -->
 		</select>
+		<button id="Refresh">Refresh</button>
+		<div id="loading">Loading...</div>
 	</body>
 </html>
