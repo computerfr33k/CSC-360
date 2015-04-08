@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Crypto Currency Calculator</title>
-		<!-- <link rel="" type="text/css" href="" /> -->
+		<link rel="" type="text/css" href="style.css" />
 		<script src="../../jquery-2.1.3.min.js"></script>
 		<script type="text/javascript" src="crypto.js"></script>
 	</head>
@@ -9,11 +9,12 @@
 		<label for="BTC">Bitcoin(s) (BTC):</label>
 		<input type="number" id="BTC" value="1" />
 		=
-		<input id="FiatValue" type="number" onchange="FiatToBtc();" />
-		<select id="FiatCurrency" onchange="BtcToFiat();">
+		<input id="FiatValue" type="number" />
+		<select id="FiatCurrency">
 			<!-- This will be build dynamically from JS using the json data returned -->
 		</select>
 		<button id="Refresh">Refresh</button>
-		<div id="loading">Loading...</div>
+		
+		<div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 </html>

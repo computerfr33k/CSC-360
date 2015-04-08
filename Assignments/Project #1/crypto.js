@@ -1,7 +1,27 @@
-var BitcoinPrice;
 var CurrenciesAPI = 'https://api.coinbase.com/v1/currencies';
 var ExchangeRatesAPI = 'https://api.coinbase.com/v1/currencies/exchange_rates';
 var ExchangeRates;
+
+$body = $("body");
+
+$(document).on({
+	ajaxStart : function() {
+		$body.addClass("loading");
+	},
+	ajaxStop : function() {
+		$body.removeClass("loading");
+	}
+});
+
+$(window).ready(function() {
+	$("#BTC").attr('onchange', 'BtcToFiat();');
+	$("#FiatValue").attr('onchange', 'FiatToBtc();');
+	$("#FiatCurrency").attr('onchange', 'BtcToFiat();');
+	$("#Refresh").attr("onclick", 'RefreshExchangeData();');
+
+	// fetch BTC Data
+	RefreshExchangeData();
+});
 
 function RefreshExchangeData() {
 
@@ -26,18 +46,8 @@ function RefreshExchangeData() {
 			//$("#FiatValue").val(ExchangeRates['btc_to_' + keys[0]]);
 			BtcToFiat();
 		});
-
-		$("#loading").hide();
 	});
 }
-
-
-$(window).ready(function() {
-	$("#BTC").attr('onchange', 'BtcToFiat();');
-	
-	// fetch BTC Data
-	RefreshExchangeData();
-});
 
 function BtcToFiat() {
 	// calculate what x amount of BTC is in Fiat; (e.g. 1 BTC is $250.00)
