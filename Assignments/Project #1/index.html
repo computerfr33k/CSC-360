@@ -2,24 +2,41 @@
 	<head>
 		<title>Crypto Currency Calculator</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        
+		<!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!-- Compiled and minified CSS -->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-		<link rel="stylesheet" type="text/css" href="style.css" />
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="js/materialize.min.js"></script>
 
-		<script type="text/javascript" src="../../jquery-2.1.3.min.js"></script>
-		<script type="text/javascript" src="jquery.blockUI.js"></script>
-		<script type="text/javascript" src="crypto.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript" src="js/crypto.js"></script>
 	</head>
 	<body>
-		<h1 id="Header">Bitcoin/Fiat Currency Converter</h1>
-		<label for="BTC">Bitcoin(s) (BTC):</label>
-		<input type="number" class="NumberInput" id="BTC" value="1" />
-		=
-		<input class="NumberInput" id="FiatValue" type="number" />
-		<select id="FiatCurrency">
-			<!-- This will be built dynamically from JS using the json data returned -->
-		</select>
-		<button id="Refresh">
-			Refresh
-		</button>
+		<h2 class="center-align">Bitcoin/Fiat Currency Converter</h2>
+		<div class="valign-wrapper row">
+			<div class="col">
+				<div class="input-field">
+					<select id="Coin">
+						<option value="btc">Bitcoin (BTC)</option>
+					</select>
+				</div>
+			</div>
+			<div class="col">
+				<input type="number" class="NumberInput" id="BTC" value="1" />
+			</div>
+            <div class="col">=</div>
+            <div class="col">
+				<input class="NumberInput" id="FiatValue" type="number" />
+			</div>
+            <div class="col input-field">
+				<select id="FiatSelect">
+					<option value="" disabled selected>Choose your option</option>
+				</select>
+				<label>Fiat Currency</label>
+			</div>
+		</div>
 	</body>
 </html>

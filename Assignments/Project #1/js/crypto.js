@@ -2,46 +2,50 @@ var CurrenciesAPI = 'https://api.coinbase.com/v1/currencies';
 var ExchangeRatesAPI = 'https://api.coinbase.com/v1/currencies/exchange_rates';
 var ExchangeRates;
 
-$(document).ajaxStop($.unblockUI);
-
-$(document).ready(function() {
-});
-
 $(window).ready(function() {
+	RefreshCurrencies();
+	
 	$("#BTC").attr('onchange', 'BtcToFiat();');
 	$("#FiatValue").attr('onchange', 'FiatToBtc();');
 	$("#FiatCurrency").attr('onchange', 'BtcToFiat();');
-	$("#Refresh").attr("onclick", 'RefreshExchangeData();');
+	$("#Refresh").attr("onclick", 'RefreshExchangeRates();');
+	$('select').material_select();
 
 	// fetch BTC Data
-	RefreshExchangeData();
+	//RefreshExchangeData();
+    
+    $('.preloader-wrapper').hide();
 });
 
-function RefreshExchangeData() {
-	$.blockUI({ message: 'Loading...'});
-
+function RefreshCurrencies() {
+    $('.preloader-wrapper').show();
 	$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + CurrenciesAPI, function(data) {
 
 		// parse through available currencies from API
 		var keys = [];
+		$("#FiatSelect").empty();
 		for (var key in data.contents) {
 			// the first element in the sub-array will be the name of the currency
 			// the second element in the sub-array will be the currency ISO code.
 			if (data.contents.hasOwnProperty(key)) {
 				keys.push(key);
-				$("#FiatCurrency").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
+				//$("#FiatCurrency").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
+				$("#FiatSelect").append('<li><a href="#!">' + data.contents[key][0] + '</a></li>');
 			}
 		}
-
-		// Build up Exchange Rates Array
-		$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + ExchangeRatesAPI, function(er) {
-			ExchangeRates = er.contents;
-
-			// Populate fiat value after we fetch everything
-			//$("#FiatValue").val(ExchangeRates['btc_to_' + keys[0]]);
-			BtcToFiat();
-		});
 	});
+}
+
+function RefreshExchangeRates() {
+	// Build up Exchange Rates Array
+	$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + ExchangeRatesAPI, function(er) {
+		ExchangeRates = er.contents;
+
+		// Populate fiat value after we fetch everything
+		//$("#FiatValue").val(ExchangeRates['btc_to_' + keys[0]]);
+		BtcToFiat();
+	});
+	$('select').material_select();
 }
 
 function BtcToFiat() {
