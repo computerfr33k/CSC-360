@@ -2,15 +2,9 @@ var CurrenciesAPI = 'https://api.coinbase.com/v1/currencies';
 var ExchangeRatesAPI = 'https://api.coinbase.com/v1/currencies/exchange_rates';
 var ExchangeRates;
 
-$body = $("body");
+$(document).ajaxStop($.unblockUI);
 
-$(document).on({
-	ajaxStart : function() {
-		$body.addClass("loading");
-	},
-	ajaxStop : function() {
-		$body.removeClass("loading");
-	}
+$(document).ready(function() {
 });
 
 $(window).ready(function() {
@@ -24,6 +18,7 @@ $(window).ready(function() {
 });
 
 function RefreshExchangeData() {
+	$.blockUI({ message: 'Loading...'});
 
 	$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + CurrenciesAPI, function(data) {
 
