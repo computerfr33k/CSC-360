@@ -1,42 +1,63 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Crypto Currency Calculator</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        
-		<!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<!-- Compiled and minified CSS -->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-  <!-- Compiled and minified JavaScript -->
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<!-- Compiled and minified CSS -->
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+		<!-- Compiled and minified JavaScript -->
+		<script type="text/javascript" src="js/materialize.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/crypto.js"></script>
 	</head>
 	<body>
-		<h2 class="center-align">Bitcoin/Fiat Currency Converter</h2>
-		<div class="valign-wrapper row">
-			<div class="col">
-				<div class="input-field">
-					<select id="Coin">
-						<option value="btc">Bitcoin (BTC)</option>
-					</select>
+		<main>
+			<div class="container">
+				<div class="center-align card-panel teal">
+					<h2 id="Header">Bitcoin Price Calculator</h2>
+				</div>
+				<div class="divider"></div>
+
+				<div class="row valign-wrapper center-align">
+					<div class="col s3">
+						<input id="BitcoinValue" type="number" pattern="[0-9]*" />
+					</div>
+					<div class="col s2">
+						<select>
+							<option>Bitcoin (BTC)</option>
+						</select>
+					</div>
+					<div class="col s1">
+						=
+					</div>
+					<div class="col s3">
+						<input type="number" />
+					</div>
+					<div class="col s2">
+						<select>
+							<option>USD $</option>
+						</select>
+					</div>
+					<div class="col s1">
+						<button class="btn-floating">
+							<i class="mdi-navigation-refresh"></i>
+						</button>
+					</div>
 				</div>
 			</div>
-			<div class="col">
-				<input type="number" class="NumberInput" id="BTC" value="1" />
+		</main>
+
+		<footer class="page-footer">
+			<div class="footer-copyright">
+				<div class="container">
+					© 2015 Eric Pfeiffer
+				</div>
 			</div>
-            <div class="col">=</div>
-            <div class="col">
-				<input class="NumberInput" id="FiatValue" type="number" />
-			</div>
-            <div class="col input-field">
-				<select id="FiatSelect">
-					<option value="" disabled selected>Choose your option</option>
-				</select>
-				<label>Fiat Currency</label>
-			</div>
-		</div>
+		</footer>
 	</body>
 </html>
