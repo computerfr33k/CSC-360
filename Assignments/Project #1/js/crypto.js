@@ -9,54 +9,73 @@ $(window).ready(function() {
 	$("#FiatValue").attr('onchange', 'FiatToBtc();');
 	$("#FiatCurrency").attr('onchange', 'BtcToFiat();');
 	$("#Refresh").attr("onclick", 'RefreshExchangeRates();');
-	$('select').material_select();
+    // Render select elements so they aren't missing during the initial load which would look weird
+    $('select').material_select();
 
 	// fetch BTC Data
-	//RefreshExchangeData();
-    
-    $('.preloader-wrapper').hide();
+	RefreshExchangeRates();
 });
 
 function RefreshCurrencies() {
-    $('.preloader-wrapper').show();
+    // Inform user that data is being fetched
+    Materialize.toast('loading currency data', 4000);
+    
 	$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + CurrenciesAPI, function(data) {
 
 		// parse through available currencies from API
 		var keys = [];
-		$("#FiatSelect").empty();
+		$("#CurrencyType").empty();
 		for (var key in data.contents) {
 			// the first element in the sub-array will be the name of the currency
 			// the second element in the sub-array will be the currency ISO code.
 			if (data.contents.hasOwnProperty(key)) {
 				keys.push(key);
-				//$("#FiatCurrency").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
-				$("#FiatSelect").append('<li><a href="#!">' + data.contents[key][0] + '</a></li>');
+				$("#CurrencyType").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
 			}
 		}
 		
-		$('.preloader-wrapper').hide();
+        // re-initialize the select elements to be rendered
+        $('select').material_select();
+		Materialize.toast('Currency load complete', 4000);
 	});
 }
 
 function RefreshExchangeRates() {
 	// Build up Exchange Rates Array
-	$.getJSON('http://ajax.computerfr33k.com/index.php?url=' + ExchangeRatesAPI, function(er) {
-		ExchangeRates = er.contents;
-
-		// Populate fiat value after we fetch everything
+	var Exchange = $.getJSON('http://ajax.computerfr33k.com/index.php?url=' + ExchangeRatesAPI, function() {
+	}).done(function(data) {        
+        if(data.status.http_code === 200) {
+            // API request was successful
+            ExchangeRates = data.contents;
+            
+        } else {
+            // API Server returned an error
+            // we check the http_code because my server is proxying the API call and so JQuery can't tell if the API call returned an error on its own
+            Materialize.toast('Error Loading Exchange Rates', 4000);
+        }
+        
+    }).fail(function() {
+        Materialize.toast('Error Loading Exchange Rates', 4000);
+    }).always(function() {
+        Materialize.toast('Loading Exchange Rates', 4000);
+    });
+    
+    Exchange.complete(function() {
+        // Populate fiat value after we fetch everything
 		//$("#FiatValue").val(ExchangeRates['btc_to_' + keys[0]]);
-		BtcToFiat();
-	});
-	$('select').material_select();
+        
+        $('select').material_select();
+        BtcToFiat();
+    });
 }
 
 function BtcToFiat() {
 	// calculate what x amount of BTC is in Fiat; (e.g. 1 BTC is $250.00)
-	var BTCAmount = Number($("#BTC").val());
-	var fiatExchangeRate = Number(ExchangeRates['btc_to_' + $("#FiatCurrency").val()]);
+	var BTCAmount = Number($("#BitcoinValue").val());
+	var fiatExchangeRate = Number(ExchangeRates['btc_to_' + $("#CurrencyType").val()]);
 
 	var total = BTCAmount * fiatExchangeRate;
-	$("#FiatValue").val(total.toFixed(2));
+	$("#CurrencyValue").val(total.toFixed(2));
 }
 
 function FiatToBtc() {

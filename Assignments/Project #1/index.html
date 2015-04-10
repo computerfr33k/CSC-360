@@ -25,7 +25,7 @@
 
 				<div class="row valign-wrapper center-align">
 					<div class="input-field col s3">
-						<input id="BitcoinValue" type="number" pattern="[0-9]*" class="tooltipped" data-tooltip="Enter Bitcoin Amount" />
+						<input id="BitcoinValue" type="number" pattern="[0-9]*" class="tooltipped" data-tooltip="Enter Bitcoin Amount" value="1" />
 						<label for="BitcoinValue">Bitcoin Amount</label>
 					</div>
 					<div class="col s2">
@@ -37,22 +37,19 @@
 						=
 					</div>
 					<div class="input-field col s3">
-						<input id="CurrencyValue" type="number" class="tooltipped" data-tooltip="Enter Amount to Convert" />
+						<input id="CurrencyValue" type="number" class="tooltipped" data-tooltip="Enter Amount to Convert" placeholder="0.00" />
 						<label for="CurrencyValue">Currency Amount</label>
 					</div>
-					<div class="col s2 tooltipped" data-tooltip="Change Currency">
-						<select>
-							<option>USD $</option>
+					<div class="col s3 tooltipped" data-tooltip="Change Currency">
+						<select id="CurrencyType">
+							<option disabled selected>Choose A Currency</option>
 						</select>
 					</div>
 					<div class="col s1">
-						<button class="waves-effect btn-floating tooltipped" data-tooltip="Update Exchange Rate">
+						<button class="waves-effect btn-floating tooltipped right" data-tooltip="Update Exchange Rate">
 							<i class="mdi-navigation-refresh"></i>
 						</button>
 					</div>
-				</div>
-				<div class="preloader-wrapper progress">
-					<div class="indeterminate"></div>
 				</div>
 				<div class="divider"></div>
 			</div>
