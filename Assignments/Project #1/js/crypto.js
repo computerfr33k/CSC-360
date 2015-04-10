@@ -33,6 +33,8 @@ function RefreshCurrencies() {
 				$("#FiatSelect").append('<li><a href="#!">' + data.contents[key][0] + '</a></li>');
 			}
 		}
+		
+		$('.preloader-wrapper').hide();
 	});
 }
 
