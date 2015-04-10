@@ -5,10 +5,10 @@ var ExchangeRates;
 $(window).ready(function() {
 	RefreshCurrencies();
 	
-	$("#BTC").attr('onchange', 'BtcToFiat();');
-	$("#FiatValue").attr('onchange', 'FiatToBtc();');
-	$("#FiatCurrency").attr('onchange', 'BtcToFiat();');
-	$("#Refresh").attr("onclick", 'RefreshExchangeRates();');
+	$("#BitcoinValue").attr('onchange', 'BtcToFiat();');
+	$("#CurrencyValue").attr('onchange', 'FiatToBtc();');
+	$("#CurrencyType").attr('onchange', 'BtcToFiat();');
+	$("#RefreshExchange").attr("onclick", 'RefreshExchangeRates();');
     // Render select elements so they aren't missing during the initial load which would look weird
     $('select').material_select();
 
@@ -80,10 +80,10 @@ function BtcToFiat() {
 
 function FiatToBtc() {
 	// Calculate How much Fiat is in BTC; (e.g. $100.00 is 0.41 BTC)
-	var FiatAmount = Number($("#FiatValue").val()).toFixed(2);
-	var FiatType = $("#FiatCurrency").val();
+	var FiatAmount = Number($("#CurrencyValue").val()).toFixed(2);
+	var FiatType = $("#CurrencyType").val();
 	var fiatExchangeRate = Number(ExchangeRates[FiatType + '_to_btc']);
 
 	var total = FiatAmount * fiatExchangeRate;
-	$("#BTC").val(total);
+	$("#BitcoinValue").val(total);
 }
