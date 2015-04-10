@@ -25,18 +25,21 @@ function RefreshCurrencies() {
 		// parse through available currencies from API
 		var keys = [];
 		$("#CurrencyType").empty();
+        $("#CurrencyType").append('<option disabled>Choose A Currency</option>');
 		for (var key in data.contents) {
 			// the first element in the sub-array will be the name of the currency
 			// the second element in the sub-array will be the currency ISO code.
 			if (data.contents.hasOwnProperty(key)) {
 				keys.push(key);
-				$("#CurrencyType").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
+                $("#CurrencyType").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
 			}
 		}
 		
         // re-initialize the select elements to be rendered
         $('select').material_select();
-		Materialize.toast('Currency load complete', 4000);
+        // Select USD
+        $('#CurrencyType').val('usd').prop('selected');
+		Materialize.toast('Currency Load Complete', 4000);
 	});
 }
 
@@ -66,6 +69,7 @@ function RefreshExchangeRates() {
         
         $('select').material_select();
         BtcToFiat();
+        Materialize.toast('Loading Exchange Rates Complete', 4000);
     });
 }
 
