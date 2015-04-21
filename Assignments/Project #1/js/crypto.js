@@ -9,8 +9,8 @@ $(window).ready(function() {
 	$("#CurrencyValue").attr('onchange', 'FiatToBtc();');
 	$("#CurrencyType").attr('onchange', 'BtcToFiat();');
 	$("#RefreshExchange").attr("onclick", 'RefreshExchangeRates();');
-    // Render select elements so they aren't missing during the initial load which would look weird
-    $('select').material_select();
+    	// Render select elements so they aren't missing during the initial load which would look weird
+    	$('select').material_select();
 
 	// fetch BTC Data
 	RefreshExchangeRates();
@@ -25,13 +25,13 @@ function RefreshCurrencies() {
 		// parse through available currencies from API
 		var keys = [];
 		$("#CurrencyType").empty();
-        $("#CurrencyType").append('<option disabled>Choose A Currency</option>');
+		$("#CurrencyType").append('<option disabled>Choose A Currency</option>');
 		for (var key in data.contents) {
 			// the first element in the sub-array will be the name of the currency
 			// the second element in the sub-array will be the currency ISO code.
 			if (data.contents.hasOwnProperty(key)) {
 				keys.push(key);
-                $("#CurrencyType").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
+                		$("#CurrencyType").append('<option value="' + data.contents[key][1].toLowerCase() + '">' + data.contents[key][0] + '</option>');
 			}
 		}
 		
@@ -47,23 +47,23 @@ function RefreshExchangeRates() {
 	// Build up Exchange Rates Array
 	var Exchange = $.getJSON('http://ajax.computerfr33k.com/index.php?url=' + ExchangeRatesAPI, function() {
 	}).done(function(data) {        
-        if(data.status.http_code === 200) {
-            // API request was successful
-            ExchangeRates = data.contents;
+        	if(data.status.http_code === 200) {
+            		// API request was successful
+            		ExchangeRates = data.contents;
             
-        } else {
-            // API Server returned an error
-            // we check the http_code because my server is proxying the API call and so JQuery can't tell if the API call returned an error on its own
-            Materialize.toast('Error Loading Exchange Rates', 4000);
-        }
+        	} else {
+            		// API Server returned an error
+            		// we check the http_code because my server is proxying the API call and so JQuery can't tell if the API call returned an error on its own
+            		Materialize.toast('Error Loading Exchange Rates', 4000);
+        	}
         
-    }).fail(function() {
-        Materialize.toast('Error Loading Exchange Rates', 4000);
-    }).always(function() {
-        Materialize.toast('Loading Exchange Rates', 4000);
-    });
+	}).fail(function() {
+        	Materialize.toast('Error Loading Exchange Rates', 4000);
+    	}).always(function() {
+        	Materialize.toast('Loading Exchange Rates', 4000);
+    	});
     
-    Exchange.complete(function() {
+    	Exchange.complete(function() {
         // Populate fiat value after we fetch everything
 		//$("#FiatValue").val(ExchangeRates['btc_to_' + keys[0]]);
         
