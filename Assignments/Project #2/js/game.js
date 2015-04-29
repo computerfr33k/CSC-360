@@ -12,12 +12,6 @@ $(function () {
 	main();
 
 	function main() {
-		// Display Game Info In Dialog
-		$("#dialog").dialog({
-			position: {my: "left bottom", at: "left bottom"}
-		});
-		// End Dialog Info
-
 		board = new GameBoard();
 	  board.cellMarker = '<i class="fa fa-2x fa-question-circle"></i>';
 	  board.setBoard();
