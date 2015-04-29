@@ -13,6 +13,13 @@
 	<title>Game Board</title>
 
 	<script src="../../jquery-2.1.3.min.js"></script>
+	<!-- JQuery UI -->
+	<script src="jquery-ui/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.theme.min.css">
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.structure.min.css">
+	<!-- End JQuery UI -->
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<!-- Optional theme -->
@@ -29,16 +36,34 @@
 
 <body>
 	<div class="container">
+		<div class="row row-offcanvas row-offcanvas-left">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="text-center">Archaeology Board</h2>
 			</div>
 			<div class="panel-body">
-				<table id="board" class="table table-bordered table-hover text-center">
-
-				</table>
+				<!-- sidebar -->
+					<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								Game Info
+							</div>
+							<div class="panel-body">
+							<ul class="nav">
+									<li>High Score: <span id="HighScoreValue">N/A</span></li>
+									<li>Total Dig Attempts: <span id="TotalDigAttempts">0</span></li>
+									<li>Successful Digs: <span id="SuccessfulDigs">0</span></li>
+									<li>Unsuccessful Digs: <span id="UnsuccessfulDigs">0</span></li>
+							</ul>
+						</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-9">
+				<table id="board" class="table table-bordered table-hover text-center"></table>
+			</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>

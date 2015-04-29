@@ -7,10 +7,17 @@
 // Warning! The function tryDig and the variable board are global variables!
 
 $(function () {
+	var totalDigs = 0;
 
 	main();
 
 	function main() {
+		// Display Game Info In Dialog
+		$("#dialog").dialog({
+			position: {my: "left bottom", at: "left bottom"}
+		});
+		// End Dialog Info
+
 		board = new GameBoard();
 	  board.cellMarker = '<i class="fa fa-2x fa-question-circle"></i>';
 	  board.setBoard();
@@ -28,6 +35,10 @@ $(function () {
 		});
 	}
 
+	function GameDialogInfo() {
+		$("dialog").dialog();
+	}
+
 	function showDigAnimation(cell, object) {
 		$(cell).html('<i class="fa-2x fa fa-spinner fa-spin"></i>');
 		setTimeout(function() {
@@ -43,6 +54,10 @@ $(function () {
 
   tryDig = function(targetCell)
   {
+		totalDigs = totalDigs+1;
+		$("#TotalDigAttempts").text(totalDigs);
+		console.log(totalDigs);
+
     var targetObj = board.dig(targetCell);
     showDigAnimation("#cell"+targetCell, targetObj);
   }
