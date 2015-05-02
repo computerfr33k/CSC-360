@@ -121,7 +121,7 @@ $(function () {
 
 		if (currentScore < 500) {
 			msg = "You've completed the game, but didn't do so well. Better luck next time!";
-		} else if (currentScore > 500 && currentScore < 1000) {
+		} else if (currentScore > 500 && currentScore < 1200) {
 			msg = "You've Completed the game and have done considerably well. Well Done!";
 		} else {
 			msg = "Woah, looks like we've got a professional over here. Very well done, Consider challenging a friend for more competition.";
