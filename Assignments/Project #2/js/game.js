@@ -48,6 +48,11 @@ $(function () {
 		$("#NewGame").click(function () {
 			location.reload();
 		});
+		
+		$("#summaryButton").click(function() {
+			$("#summary").fadeIn();
+		});
+		$("#summary").hide();
 	}
 
 	function calculateScore(digResult) {
@@ -133,9 +138,8 @@ $(function () {
 	}
 
 	function elementClicked() {
-	var coordinates = $(this).attr("id").substring(4);
-console.log("digging: " + coordinates);
-tryDig(coordinates);
-
-}
+		var coordinates = $(this).attr("id").substring(4);
+		console.log("digging: " + coordinates);
+		tryDig(coordinates);
+	}
 });
