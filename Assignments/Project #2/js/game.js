@@ -40,7 +40,7 @@ $(function () {
 	}
 	
 	function calculateScore(digResult) {
-		currentScore = ;
+		//currentScore = ;
 		
 		$("#currentScore").text(currentScore);
 		
