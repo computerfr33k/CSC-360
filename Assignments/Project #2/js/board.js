@@ -32,31 +32,31 @@ function GameBoard()
  this.ruins = [
 
   { 
-    name: "Palace",
+    name: "diamond",
     size: 5,
     successes: 0
   },
 
   { 
-    name: "Temple",
+    name: "home",
     size: 4,
     successes: 0
   },
 
   { 
-    name: "Forum",
+    name: "key",
     size: 4,
     successes: 0
   },
 
   { 
-    name: "House",
+    name: "lock",
     size: 3,
     successes: 0
   },
 
   { 
-    name: "Hut",
+    name: "medkit",
     size: 2,
     successes: 0
   }

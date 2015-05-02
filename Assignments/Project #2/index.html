@@ -1,62 +1,101 @@
 <!DOCTYPE html>
 <html>
-
-<!-- Archaeology game board -->
-<!-- Written by Craig Miller, April 2012 -->
-<!-- Modified by Craig Miller, September 2012 -->
-
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Game Board</title>
-
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!--<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
-
-	<link href="css/board.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="js/board.js"></script>
-	<script type="text/javascript" src="js/game.js"></script>
-</head>
-
-<body>
-	<div class="container">
-		<div class="row row-offcanvas row-offcanvas-left">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="text-center">Archaeology Board</h2>
-			</div>
-			<div class="panel-body">
-				<!-- sidebar -->
-					<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								Game Info
+	<!-- Archaeology game board -->
+	<!-- Written by Craig Miller, April 2012 -->
+	<!-- Modified by Craig Miller, September 2012 -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Game Board</title>
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<!--<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
+		<link href="css/board.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/board.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row row-offcanvas row-offcanvas-left">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="text-center">Archaeology Board</h2>
+					</div>
+					<div class="panel-body">
+						<div class="col-xs-7 col-sm-4 sidebar-offcanvas" id="sidebar" role="navigation">
+							<div class="panel panel-default">
+								<div class="panel-heading">Game Info</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-6">
+											High Score:
+										</div>
+										<div class="col-xs-2">
+											N/A
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											Total Digs:
+										</div>
+										<div class="col-xs-1" id="totalDigs">
+											0
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											Current Score:
+										</div>
+										<div class="col-xs-2" id="currentScore">0</div>
+									</div>
+									<p></p>
+									<table class="table table-condensed">
+										<th>Artifact</th>
+										<th>Found</th>
+										<th>Remaining</th>
+										<tr>
+											<td><i class="fa fa-diamond"></i> Diamond</td>
+											<td id="diamondFound">0</td>
+											<td id="diamondRemaining">5</td>
+										</tr>
+										<tr>
+											<td><i class="fa fa-home"></i> Home</td>
+											<td id="homeFound">0</td>
+											<td id="homeRemaining">4</td>
+										</tr>
+										<tr>
+											<td><i class="fa fa-key"></i> Key</td>
+											<td id="keyFound">0</td>
+											<td id="keyRemaining">4</td>
+										</tr>
+										<tr>
+											<td><i class="fa fa-lock"></i> Lock</td>
+											<td id="lockFound">0</td>
+											<td id="lockRemaining">3</td>
+										</tr>
+										<tr>
+											<td><i class="fa fa-medkit"></i> Medkit</td>
+											<td id="medkitFound">0</td>
+											<td id="medkitRemaining">2</td>
+										</tr>
+									</table>
+									<button class="button">New Game</button>
+								</div>
 							</div>
-							<div class="panel-body">
-							<ul class="nav">
-									<li>High Score: <span id="HighScoreValue">N/A</span></li>
-									<li>Total Dig Attempts: <span id="TotalDigAttempts">0</span></li>
-									<li>Successful Digs: <span id="SuccessfulDigs">0</span></li>
-									<li>Unsuccessful Digs: <span id="UnsuccessfulDigs">0</span></li>
-							</ul>
 						</div>
+						<div class="col-xs-11 col-sm-8">
+							<table id="board" class="table table-bordered table-hover text-center"></table>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-9">
-				<table id="board" class="table table-bordered table-hover text-center"></table>
+				</div>
 			</div>
-			</div>
-		</div>
-	</div>
-</body>
+	</body>
 
 </html>
