@@ -17,6 +17,8 @@ $(function () {
 	main();
 
 	function main() {
+		$("#highScore").text(localStorage.getItem("highScore"));
+		
 		totalDigs = 0;
 		successfulDigs = 0;
 		unsuccessfulDigs = 0;
@@ -87,6 +89,12 @@ $(function () {
 					$('.top-right').notify({
 						message: { text: 'All ' + name + 's have been found!' }
 					}).show();
+					
+					var highScore = Number($("#highScore").text());
+					if(currentScore > highScore) {
+						$("#highScore").text(currentScore);
+						localStorage.setItem("highScore", currentScore);
+					}
 				}
 				
 			} else {
