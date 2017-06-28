@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Crypto Currency Calculator</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<!--Import jQuery before materialize.js-->
-		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-		<!-- Compiled and minified CSS -->
-		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<head>
+	<title>Crypto Currency Calculator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<!-- Compiled and minified JavaScript -->
-		<script type="text/javascript" src="js/materialize.min.js"></script>
+	<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
 
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<script type="text/javascript" src="js/crypto.js"></script>
-	</head>
-	<body>
-		<main>
-			<div class="container">
-				<div class="center-align card-panel teal">
-					<h2 id="Header">Bitcoin Price Calculator</h2>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+	<main>
+		<div class="container">
+			<div class="center-align card-panel teal">
+				<h2 id="Header">Bitcoin Price Calculator</h2>
+			</div>
+			<div id="preloader" class="progress">
+				<div class="indeterminate"></div>
+			</div>
+			<div class="divider"></div>
+
+			<div class="row valign-wrapper center-align">
+				<div class="input-field col s2">
+					<input id="BitcoinValue" type="number" pattern="[0-9]*" class="tooltipped" data-tooltip="Enter Bitcoin Amount" value="1"
+					/>
+					<label for="BitcoinValue">Bitcoin Amount</label>
 				</div>
-				<div class="divider"></div>
-
-				<div class="row valign-wrapper center-align">
-					<div class="input-field col s2">
-						<input id="BitcoinValue" type="number" pattern="[0-9]*" class="tooltipped" data-tooltip="Enter Bitcoin Amount" value="1" />
-						<label for="BitcoinValue">Bitcoin Amount</label>
-					</div>
-					<div class="col s2">
-						<select>
+				<div class="col s2">
+					<select>
 							<option>Bitcoin (BTC)</option>
 						</select>
-					</div>
-					<div class="col s1">
-						=
-					</div>
-					<div class="input-field col s2">
-						<input id="CurrencyValue" type="number" class="tooltipped" data-tooltip="Enter Amount to Convert" placeholder="0.00" />
-						<label for="CurrencyValue">Currency Amount</label>
-					</div>
-					<div class="col s5 tooltipped" data-tooltip="Change Currency">
-						<select id="CurrencyType" class="">
+				</div>
+				<div class="col s1">
+					=
+				</div>
+				<div class="input-field col s2">
+					<input id="CurrencyValue" type="number" class="tooltipped" data-tooltip="Enter Amount to Convert" placeholder="0.00" />
+					<label for="CurrencyValue">Currency Amount</label>
+				</div>
+				<div class="col s5 tooltipped" data-tooltip="Change Currency">
+					<select id="CurrencyType" class="">
                             				<option disabled selected>Choose A Currency</option>
 						</select>
-					</div>
-					<div class="col s1">
-						<button id="RefreshExchange" class="waves-effect btn-floating tooltipped right" data-tooltip="Update Exchange Rate">
-							<i class="mdi-navigation-refresh"></i>
+				</div>
+				<div class="col s1">
+					<button id="RefreshExchange" class="waves-effect btn-floating tooltipped right" data-tooltip="Update Exchange Rate">
+							<i class="material-icons">cached</i>
 						</button>
-					</div>
 				</div>
-				<div class="divider"></div>
 			</div>
-		</main>
+			<div class="divider"></div>
+		</div>
+	</main>
 
-		<footer class="page-footer">
-			<div class="footer-copyright">
-				<div class="container">
-					© 2015 Eric Pfeiffer
-				</div>
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				© 2015 Eric Pfeiffer
 			</div>
-		</footer>
-	</body>
+		</div>
+	</footer>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<!--<script type="text/javascript" src="js/materialize.min.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/crypto.js"></script>
+</body>
+
 </html>
